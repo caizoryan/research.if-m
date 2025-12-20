@@ -24,7 +24,9 @@ Let's begin with what is required.
 > Good References of publishing code
 
 [Parinfer](https://shaunlebron.github.io/parinfer/)
+
 The gifs/visualisations are super helpful in order to understand the concepts and stuf. Outline helps with navigation and giving an understanding of where you are in the document. The typing animation is pretty fun too, + its an interactive demo...
 
 [p5.js](https://p5js.org/tutorials/repeating-with-loops/)
+
 Live edit and run. I like when there's specific examples that you can edit and re-run. I think you learn best when you see what happens when you change values. Also distinguishes runnable vs not runnable code by not having a play button. Runnable code runs by default, it can be rerun once you change stuff.
