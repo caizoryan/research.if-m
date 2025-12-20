@@ -22,6 +22,7 @@ Let's begin with what is required.
 
 # Good References
 > Good References of publishing code
+
 [Parinfer](https://shaunlebron.github.io/parinfer/)
 The gifs/visualisations are super helpful in order to understand the concepts and stuf. Outline helps with navigation and giving an understanding of where you are in the document. The typing animation is pretty fun too, + its an interactive demo...
 
