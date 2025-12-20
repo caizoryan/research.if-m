@@ -2,6 +2,66 @@
 This is going to be a repository to publish our research and resources. It is for ourselves to look back to as reference as well as anyone who could benefit from it.
 
 
+# Directory structure
+
+```
+compile.js - compiler
+index.md   - main page
+
+styles     - use for styles
+|-- style.css
+
+pages
+|-- applications
+    |-- research.if-m.md
+|-- technoligies
+    |-- static-site-generators.md
+```
+
+``` compile.js ``` will go through all files in the dir. If it is a markdown file, tranform to a HTML file. If it is a JS file, also transform into a HTML file and make comment blocks to be markdown. This is how the directory should look like after being transformed.
+
+```
+compile.js - compiler
+compile.js.html 
+
+index.md   - main page
+index.html
+
+styles     - use for styles
+|-- style.css
+
+pages
+|-- applications
+    |-- research.if-m.md
+    |-- research.if-m.html
+|-- technoligies
+    |-- static-site-generators.md
+    |-- static-site-generators.html
+
+```
+
+When transforming MD to HTML also make sure to change all ```.md``` refs to ```.html``` refs.
+
+A JS file that looks like this: 
+
+```
+// # Title: Can be whatever
+// Here is a console.log
+console.log("Dawg")
+// [link](research.if-m.works)
+```
+
+should transform to this html
+
+```
+<h1>Title: Can be whatever</h1>
+<p>Here is a console.log</p>
+<code>
+  console.log("Dawg")
+</code>
+<a href='research.if-m.works'>link</a>
+```
+
 # Spec for this website
 Let's begin with what is required.
 
