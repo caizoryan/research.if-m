@@ -21,7 +21,7 @@ a { color: #2563eb; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* Code blocks (xmp) */
-xmp {
+xmp, pre {
   background: #111827;
   color: #f9fafb;
   padding: 1em;
@@ -29,6 +29,11 @@ xmp {
   overflow-x: auto;
   font-size: 0.95em;
   line-height: 1.5;
+}
+
+.two-col {
+	display: grid;
+	grid-template-columns: 50% 50%;
 }
 
 /* Lists & quotes */

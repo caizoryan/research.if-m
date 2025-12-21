@@ -1,4 +1,11 @@
-import fs from 'fs'
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+</head> 
+<body>
+	<pre>import fs from 'fs'
 import markdownIt from "./markdown-it/markdown-it.js";
 import {iframescript} from "./iframify.js"
 
@@ -38,14 +45,14 @@ async function eat(tree) {
 			if (!ignore) {
 				let children = await eat(tree);
 				children = Array.isArray(children) ? children.join("") : children;
-				ret.push(`<${item.tag}${at_string ? " "+at_string: ''}> ${children} </${item.tag}>`);
+				ret.push(`&lt;${item.tag}${at_string ? " "+at_string: ''}> ${children} &lt;/${item.tag}>`);
 			}
 		}
 
 		if (item.nesting === 0) {
 			if (!item.children || item.children.length === 0) {
 				let p = item.type === "softbreak"
-					? "<br></br>"
+					? "&lt;br>&lt;/br>"
 					: item.type === "fence"
 						? codeblock(item)
 						: item.content;
@@ -64,13 +71,13 @@ async function eat(tree) {
 
 
 let codeblock = (item) => {
-	if (item.info == 'js-run') return `<div class='two-col codeblock'>
-		<textarea>${item.content}</textarea>
-		<iframe srcdoc='${iframescript(item.content)}'></iframe>
-		<button>run</button>
-	</div>`
+	if (item.info == 'js-run') return `&lt;div class='two-col codeblock'>
+		&lt;textarea>${item.content}&lt;/textarea>
+		&lt;iframe srcdoc='${iframescript(item.content)}'>&lt;/iframe>
+		&lt;button>run&lt;/button>
+	&lt;/div>`
 
-	else return `<pre>${item.content}</pre>`
+	else return `&lt;pre>${item.content}&lt;/pre>`
 }
 
 let safe_parse = (content) => {
@@ -109,15 +116,15 @@ const MD = async (content) => {
 };
 
 let html = body => `
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="/styles/style.css">
-</head> 
-<body>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;link rel="stylesheet" href="/styles/style.css">
+&lt;/head> 
+&lt;body>
 	${body}
-</body>
-<script type='module' src='script.js'></script>
+&lt;/body>
+&lt;script type='module' src='script.js'>&lt;/script>
 `
 let transform = async (path) => {
  let file = fs.readFileSync("./"+path, {encoding:'utf-8'})
@@ -130,7 +137,7 @@ let transform = async (path) => {
 
 let transformjs = async (path) => {
 	let file = fs.readFileSync("./"+path, {encoding:'utf-8'})
-	let content = `<pre>${file.replaceAll("<", "&lt;")}</pre>`;
+	let content = `&lt;pre>${file.replaceAll("&lt;", "&lt;")}&lt;/pre>`;
 	let split = path.split('.')
 	let htmlpath = split.join(".")+'.html'
 	fs.writeFileSync(htmlpath, html(content))
@@ -153,3 +160,6 @@ files.forEach(path => {
 })
 
 // let content = await MD(file);
+</pre>
+</body>
+<script type='module' src='script.js'></script>
